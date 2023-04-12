@@ -151,8 +151,11 @@ class BinarySearchTree{
    with a largest key
    */
    public int getMax(Node root){
-	return 0;
-	  //implement me
+	if (root.right != null) {
+		   return getMax(root.right);
+	   } else {
+		   return root.value;
+	   }
    }
    
    
@@ -187,12 +190,8 @@ class BinarySearchTree{
          }
       }
       return root;  
-   }
-   
-   
-   
+   } 
 }
-
 
 
 public class TreeDemo{
@@ -205,17 +204,17 @@ public class TreeDemo{
       t1.insert(90);
       t1.insert(22);
       
-      System.out.print("pre-order :   ");
+      System.out.println("pre-order :   ");
       t1.preOrderTraversal(t1.root);
       System.out.println();
-      System.out.print("in-order :   ");
+      System.out.println("in-order :   ");
       t1.inOrderTraversal(t1.root);
       System.out.println();
-      System.out.print("post-order :   ");
+      System.out.println("post-order :   ");
       t1.postOrderTraversal(t1.root);
       //System.out.println(t1.find(t1.root, 22));
       System.out.println("Minimum element:   " + t1.getMin(t1.root));
-           
+      System.out.println("Maximum element:   " + t1.getMax(t1.root));
       
    }  
 }
