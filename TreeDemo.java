@@ -36,13 +36,52 @@ class BinarySearchTree{
       return root;
    }
    
+   /*
+   inserts a node into the tree
+   */
+   public void insert(int value){
+      //tree is empty
+      if(root == null){
+         root = new Node(value);
+         return;
+      }else{
+         Node current = root;
+         Node parent = null;
+         
+         while(true){
+            parent = current;
+            
+            if(value < current.value){
+               current = current.left;
+               if(current == null){
+                  parent.left = new Node(value);
+                  return;
+               }
+            }else{
+               current = current.right;
+               if(current == null){
+                  parent.right = new Node(value);
+                  return;
+               }
+            }
+           
+         }//closing while
+      
+      }//closing main if-else 
+   }
+   
    
    
    /*
    pre-order traversal
    */
    public void preOrderTraversal(Node root){
-      //implement me
+      if (root != null) {
+    	  System.out.println(root.value);
+    	  preOrderTraversal(root.left);
+    	  preOrderTraversal(root.right);
+      }
+	   
    }
 
    
@@ -51,7 +90,7 @@ class BinarySearchTree{
    in-order traversal
    */
    public void inOrderTraversal(Node root){
-      //implement me
+	   //implement me
    }
    
    
@@ -81,6 +120,7 @@ class BinarySearchTree{
    with a smallest key
    */
    public int getMin(Node root){
+	return 0;
       //implement me
    }
   
@@ -91,6 +131,7 @@ class BinarySearchTree{
    with a largest key
    */
    public int getMax(Node root){
+	return 0;
 	  //implement me
    }
    
