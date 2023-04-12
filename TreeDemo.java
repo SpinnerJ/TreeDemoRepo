@@ -103,7 +103,11 @@ class BinarySearchTree{
    post-order traversal
    */
    public void postOrderTraversal(Node root){
-      //implement me
+      if (root != null) {
+    	  postOrderTraversal(root.left);
+    	  postOrderTraversal(root.right);
+    	  System.out.println(root.value);
+      }
    }
    
    
@@ -113,8 +117,16 @@ class BinarySearchTree{
    with a specific value
    */
    public boolean find(Node root, int key){
-	  //implement me
-      return false;           
+
+	   if (root == null) {
+		   return false;
+	   } else if (root.value == key) {
+		   return true;
+	   } else if (root.value > key) {
+		   return find(root.left, key);
+	   } else {
+		   return find(root.right, key);
+	   }          
    }
    
    
@@ -124,8 +136,12 @@ class BinarySearchTree{
    with a smallest key
    */
    public int getMin(Node root){
-	return 0;
-      //implement me
+	   
+	   if (root.left != null) {
+		   return getMin(root.left);
+	   } else {
+		   return root.value;
+	   }
    }
   
   
@@ -194,8 +210,11 @@ public class TreeDemo{
       System.out.println();
       System.out.print("in-order :   ");
       t1.inOrderTraversal(t1.root);
-      
-      
+      System.out.println();
+      System.out.print("post-order :   ");
+      t1.postOrderTraversal(t1.root);
+      //System.out.println(t1.find(t1.root, 22));
+      System.out.println("Minimum element:   " + t1.getMin(t1.root));
            
       
    }  
